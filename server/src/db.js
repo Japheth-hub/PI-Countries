@@ -1,5 +1,7 @@
 require("dotenv").config();
 const { Sequelize } = require("sequelize");
+const modelCountry = require('./models/Country');
+const modelActivity = require('./models/Activity');
 
 const fs = require('fs');
 const path = require('path');
@@ -28,9 +30,11 @@ let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Country } = sequelize.models;
+const { Country, Activity } = sequelize.models;
 
 // Aca vendrian las relaciones
+Country.belongsToMany(Activity, { through: 'country_activity' });
+Activity.belongsToMany(Country, { through: 'country_activity' });
 // Product.hasMany(Reviews);
 
 module.exports = {
