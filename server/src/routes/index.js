@@ -3,8 +3,8 @@ const {getCountries, getPais, getPaisName, postActivities, getActivities} = requ
 
 const router = Router();
 
+router.get('/countries', getCountries);
 router.get('/countries/name/', getPaisName);
-router.get('/countriesPage/:page', getCountries);
 router.get('/countries/:idPais', getPais);
 router.get('/activities', getActivities);
 router.post('/activities', postActivities);

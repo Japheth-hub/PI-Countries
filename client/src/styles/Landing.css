@@ -1,0 +1,28 @@
+.landing{
+    width: 100%;
+    height: 100vh;
+    background-image: url('../assets/landingPage.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-HomePage{
+    margin: 20px auto;
+    padding: 5px 10px;
+    border-radius: 9px;
+    font-size: 2rem;
+    background-color: rgba(0, 0, 0, 0.0);
+    color: white;
+    font-weight: bold;
+    box-shadow: 0px 0px 10px rgb(20, 119, 158);
+    cursor: pointer;
+    transition: all .4s;
+}
+.btn-HomePage:hover{
+    box-shadow: 0px 0px 10px rgb(20, 119, 158);
+    color: black;
+    text-shadow: 2px 0px 3px  rgb(20, 119, 158), 0px 2px 3px  rgb(20, 119, 158), -2px 0px 3px  rgb(20, 119, 158), 0px -2px 3px rgb(20, 119, 158) ;
+}
