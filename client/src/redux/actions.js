@@ -1,7 +1,8 @@
-import { CONTINENTE, ACTIVIDAD, ORDEN, PAISES, COINCIDENCIA } from "./actionsTypes";
+import { CONTINENTE, ACTIVIDAD, ORDEN, PAISES, COINCIDENCIA, FILTERACTIVITY, UPDATESTATE } from "./actionsTypes";
 import axios from 'axios';
 
 const URL = 'http://localhost:3001/countries'
+const URLactivities = 'http://localhost:3001/activities'
 
 
 export const paises = ()=>{
@@ -32,16 +33,38 @@ export const coincidencia = (text) => {
     };
 };
 
+export const actividad = ()=>{
+    return async (dispatch)=>{
+        try {
+            const {data} = await axios(URLactivities);
+            return dispatch({
+                type: ACTIVIDAD,
+                payload: data
+            })
+        } catch (error) {
+            console.log('Tenemos este error : ' + error)
+        }
+    }
+}
+
+export const updateState =(orden, tipo) => {
+    return {
+        type: UPDATESTATE,
+        payload: {orden, tipo}
+    }
+}
+
 export const continente = (continente)=>{
     return{
         type: CONTINENTE,
         payload: continente
     }
 }
-export const actividad = (actividad)=>{
+
+export const filterActivity = (activity)=>{
     return{
-        type: ACTIVIDAD,
-        payload: actividad
+        type: FILTERACTIVITY,
+        payload: activity
     }
 }
 

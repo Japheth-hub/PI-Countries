@@ -1,4 +1,4 @@
-const { Country } = require('../db');
+const { Country, Activity } = require('../db');
 const { Op } = require('sequelize');
 
 
@@ -11,7 +11,13 @@ module.exports = async function getPaisName(req, res){
                 name: {
                     [Op.iLike]: `%${name}%`
                 }
-            }
+            },
+            include: [
+                {
+                    model: Activity,
+                    require: true
+                }
+            ]
         })
 
         if(paises.length === 0){
