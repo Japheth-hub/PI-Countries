@@ -1,10 +1,12 @@
-import { CONTINENTE, ACTIVIDAD, ORDEN, PAISES, COINCIDENCIA, FILTERACTIVITY, UPDATESTATE } from "./actionsTypes";
+import { CONTINENTE, ACTIVIDAD, PAISES, COINCIDENCIA, FILTERACTIVITY, UPDATESTATE, LISTAPAGINA, TITLE } from "./actionsTypes";
 
 const initialState = {
     allCountries: [],
     countries: [],
     allActivities:[],
-    activities:[]
+    activities:[],
+    pagina: [],
+    title: ""
 }
 
 export default function reducer(state = initialState, action){
@@ -24,17 +26,10 @@ export default function reducer(state = initialState, action){
             };
 
         case CONTINENTE:
-            if(action.payload === 'Todos'){
-                return {
-                    ...state,
-                    allCountries: [...state.countries]
-                }
-            } else {
                 return {
                     ...state,
                     allCountries: state.countries.filter((pais) => pais && pais.continent === action.payload)
                 }
-            };
 
         case UPDATESTATE:
             const {orden, tipo} = action.payload;
@@ -62,6 +57,18 @@ export default function reducer(state = initialState, action){
                 ...state, 
                 allActivities: action.payload,
                 activities: action.payload
+            }
+
+        case LISTAPAGINA:
+            return {
+                ...state,
+                pagina: action.payload
+            }
+        
+        case TITLE:
+            return {
+                ...state,
+                title: action.payload
             }
 
         default:

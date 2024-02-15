@@ -1,4 +1,4 @@
-import { CONTINENTE, ACTIVIDAD, ORDEN, PAISES, COINCIDENCIA, FILTERACTIVITY, UPDATESTATE } from "./actionsTypes";
+import { CONTINENTE, ACTIVIDAD, ORDEN, PAISES, COINCIDENCIA, FILTERACTIVITY, UPDATESTATE, LISTAPAGINA, TITLE } from "./actionsTypes";
 import axios from 'axios';
 
 const URL = 'http://localhost:3001/countries'
@@ -72,5 +72,22 @@ export const orden =(orden)=>{
     return{
         type: ORDEN,
         payload: orden
+    }
+}
+
+export const listaPagina = (paises, page) => {
+        const offset = ((page - 1) * 10);
+        const limit = offset + 10;
+        const pagina = paises.slice(offset, limit);
+        return {
+            type: LISTAPAGINA,
+            payload: pagina
+        }
+}
+
+export const title = (title) => {
+    return {
+        type: TITLE,
+        payload: title
     }
 }
