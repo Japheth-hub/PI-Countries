@@ -73,8 +73,8 @@ export default function Navbar() {
   }
 
   useEffect(() => {
-    allPaises()
-    dispatch(actividad())
+    if(selectPaises.length === 0) allPaises()
+    if(selectActividades.length === 0)dispatch(actividad())
   }, [])
 
   useEffect(() => {
@@ -119,9 +119,9 @@ export default function Navbar() {
         </div>
 
         <div className="paginado">
-          <button onClick={() => { menos(page) }}>Prev</button>
+          <button onClick={() => { menos(page) }}>&#10094;</button>
           <input id="inputPage" type="number" value={page} onChange={handlePage} />
-          <button onClick={() => { mas(page) }}>Next</button>
+          <button onClick={() => { mas(page) }}>&#10095;</button>
         </div>
 
         <div className="filtros">

@@ -2,6 +2,7 @@ import "../styles/Home.css"
 import React from "react"
 import { useSelector } from "react-redux"
 import Navbar from "./Navbar"
+import Cards from "./Cards"
 
 export default function home() {
 
@@ -13,7 +14,7 @@ export default function home() {
   return (
     <div className="home">
       <Navbar/>
-      
+      <Cards title={title} pagina={selectPagina}/>
     </div>
   )
 }
