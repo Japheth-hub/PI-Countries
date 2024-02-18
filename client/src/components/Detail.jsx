@@ -2,14 +2,44 @@ import React from 'react'
 import '../styles/Detail.css'
 import { useParams, Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import FormActivity from './FormActivity'
 
 
 export default function Detail() {
-  const paises = useSelector(state => state.pagina)
-
   const { id } = useParams();
-  const pais = paises.find((pais) => pais.id === id)
+  // Obteniendo pais de la store
+  // const paises = useSelector(state => state.pagina)
+  // const pais = paises.find((pais) => pais.id === id)
 
+  const [pais, setPais] = useState({})
+  const [load, setLoad] = useState(true)
+  const [modal, setModal] = useState('none')
+  const URL = `http://localhost:3001/countries/${id}`
+
+  function showModal(){
+    setModal('block')
+  }
+
+  useEffect(()=>{
+    async function getPais(){
+      try {
+        const {data} = await axios(URL)
+        setPais(data)
+        setLoad(false)
+      } catch (error) {
+        alert("Error al mostra pais", error)
+        setLoad(false)
+      }
+    }
+    getPais();
+  }, [])
+
+  if(load){
+    return <div>CARGANDO ....</div>
+  }
+  
   return (
     <div className={`detail ${pais.continent.toUpperCase()}`}>
 
@@ -47,7 +77,7 @@ export default function Detail() {
             <tbody>
             {pais.Activities.length > 0 ? (
                 pais.Activities.map((item)=>{
-                  return (<tr key={id}>
+                  return (<tr>
                       <td>{item.id}</td>
                       <td>{item.name}</td>
                       <td>{item.dificult}</td>
@@ -62,10 +92,10 @@ export default function Detail() {
                 )}
             </tbody>
           </table>
-            <button className='btnCreate'>Create Activity</button>
+            <button className='btnCreate' onClick={()=>{showModal()}}>Create Activity</button>
         </div>
       </div>
-
+        <FormActivity/>
     </div>
   )
 }
