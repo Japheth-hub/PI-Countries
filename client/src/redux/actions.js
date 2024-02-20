@@ -1,4 +1,4 @@
-import { CONTINENTE, ACTIVIDAD, ORDEN, PAISES, COINCIDENCIA, FILTERACTIVITY, UPDATESTATE, LISTAPAGINA, TITLE } from "./actionsTypes";
+import { CONTINENTE, ACTIVIDAD, ORDEN, PAISES, COINCIDENCIA, FILTERACTIVITY, UPDATESTATE, LISTAPAGINA, TITLE, MODAL } from "./actionsTypes";
 import axios from 'axios';
 
 const URL = 'http://localhost:3001/countries'
@@ -89,5 +89,12 @@ export const title = (title) => {
     return {
         type: TITLE,
         payload: title
+    }
+}
+
+export const modal = (modal) => {
+    return {
+        type: MODAL,
+        payload: modal
     }
 }

@@ -1,4 +1,4 @@
-import { CONTINENTE, ACTIVIDAD, PAISES, COINCIDENCIA, FILTERACTIVITY, UPDATESTATE, LISTAPAGINA, TITLE } from "./actionsTypes";
+import { CONTINENTE, ACTIVIDAD, PAISES, COINCIDENCIA, FILTERACTIVITY, UPDATESTATE, LISTAPAGINA, TITLE, MODAL } from "./actionsTypes";
 
 const initialState = {
     allCountries: [],
@@ -6,7 +6,8 @@ const initialState = {
     allActivities:[],
     activities:[],
     pagina: [],
-    title: ""
+    title: "",
+    modal:"none"
 }
 
 export default function reducer(state = initialState, action){
@@ -69,6 +70,12 @@ export default function reducer(state = initialState, action){
             return {
                 ...state,
                 title: action.payload
+            }
+
+        case MODAL:
+            return {
+                ...state,
+                modal: action.payload
             }
 
         default:

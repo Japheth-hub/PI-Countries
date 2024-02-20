@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
             allowNull: false,
         },
         duration: {
-            type: DataTypes.FLOAT,
+            type: DataTypes.STRING,
             allowNull: true,
         },
         season: {

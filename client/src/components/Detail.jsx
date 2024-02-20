@@ -1,10 +1,12 @@
 import React from 'react'
 import '../styles/Detail.css'
 import { useParams, Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import FormActivity from './FormActivity'
+import {modal} from '../redux/actions'
+
 
 
 export default function Detail() {
@@ -15,11 +17,28 @@ export default function Detail() {
 
   const [pais, setPais] = useState({})
   const [load, setLoad] = useState(true)
-  const [modal, setModal] = useState('none')
+  const [allPaises, setAllPaises] = useState([])
+  const displayModal = useSelector(state => state.modal)
+  const dispatch = useDispatch();
+  
   const URL = `http://localhost:3001/countries/${id}`
+  const URLCountries = 'http://localhost:3001/countries'
 
   function showModal(){
-    setModal('block')
+    dispatch(modal('block'))
+  }
+  function getPaises(){
+    axios(URLCountries)
+      .then((res)=>{
+        const array = res.data.map((pais)=>{
+          return {
+            name:pais.name, 
+            id:pais.id
+          }
+        })
+        setAllPaises(array)
+      })
+      .catch(error=> console.log(error))
   }
 
   useEffect(()=>{
@@ -27,7 +46,10 @@ export default function Detail() {
       try {
         const {data} = await axios(URL)
         setPais(data)
-        setLoad(false)
+        getPaises()
+        setTimeout(() => {
+          setLoad(false)
+        }, 1000);
       } catch (error) {
         alert("Error al mostra pais", error)
         setLoad(false)
@@ -37,7 +59,7 @@ export default function Detail() {
   }, [])
 
   if(load){
-    return <div>CARGANDO ....</div>
+    return <div className='loading'></div>
   }
   
   return (
@@ -67,7 +89,6 @@ export default function Detail() {
             <caption>Activities</caption>
             <thead>
               <tr>
-              <th>ID</th>
               <th>Name</th>
               <th>Dificult</th>
               <th>Duration</th>
@@ -77,11 +98,10 @@ export default function Detail() {
             <tbody>
             {pais.Activities.length > 0 ? (
                 pais.Activities.map((item)=>{
-                  return (<tr>
-                      <td>{item.id}</td>
+                  return (<tr key={item.id}>
                       <td>{item.name}</td>
                       <td>{item.dificult}</td>
-                      <td>{item.duration}</td>
+                      <td>{item.duration} - Hrs</td>
                       <td>{item.season}</td>
                     </tr>
                   )})
@@ -95,7 +115,9 @@ export default function Detail() {
             <button className='btnCreate' onClick={()=>{showModal()}}>Create Activity</button>
         </div>
       </div>
-        <FormActivity/>
+    <div className='modal' style={{display:displayModal}}>
+      <FormActivity paises={allPaises} id={id}/>
+    </div>
     </div>
   )
 }

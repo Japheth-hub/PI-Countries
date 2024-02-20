@@ -1,0 +1,87 @@
+.modalContainer{
+    border: 2px solid black;
+    width: 70%;
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: white;
+    box-shadow: 0px 0px 10px white;
+}
+.modalContainer form{
+    width: 80%;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+.modalContainer form input{
+    text-align: center;
+    font-size: 1.1rem;
+}
+.modalContainer form label{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0px;
+}
+.modalContainer form input{
+    width: 250px;
+    margin: 0px 25px;
+}
+.modalContainer form input[type='number']{
+    width: 50px;
+    margin: 0px;
+}
+.modalContainer form select,
+.modalContainer form input[type='text']{
+    padding: 0px 10px;
+    font-size: 1.1rem;
+    margin: 0px 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+.duration{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.horas{
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    overflow: hidden;
+    width: fit-content;
+    border: 1px solid black;
+    padding: 0px 3px;
+}
+.horas input{
+    margin: 0px;
+    border: none;
+}
+
+.modalContainer form input[type='submit'], .closeModal{
+    width: fit-content;
+    padding: 0px 15px;
+    font-weight: bold;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    margin: 15px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 2px 2px 8px black;
+}
+.modalContainer form input[type='submit']:hover, 
+.closeModal:hover{
+    box-shadow: none;
+}
+
+.alert{
+    background-color: red;
+    border-radius: 10px;
+    padding: 5px 10px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 0px 2px black, 0px 2px 2px black, -2px 0px 2px black, 0px -2px 2px black;
+}

@@ -5,7 +5,7 @@ module.exports = async function newActivities(req, res){
         const {name, dificult, duration, season, idPais} = req.body;
 
         if(![name, dificult, duration, season, idPais].every(Boolean)){
-            res.status(401).json({error: 'Faltan datos'})
+            res.status(401).json({message: 'Faltan datos'})
             return;
         }
 
@@ -20,7 +20,7 @@ module.exports = async function newActivities(req, res){
         const pais = await Country.findByPk(idPais)
 
         if (!actividad || !pais) {
-            res.status(404).json({ error: 'Actividad o país no encontrado' });
+            res.status(404).json({ message: 'Actividad o país no encontrado' });
             return;
         }
         
