@@ -7,6 +7,9 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 export default function FormActivity({paises, id}) { 
+  paises.sort((a, b)=>{
+    return a.name.localeCompare(b.name)
+  })
 
   const URLActivitites = 'http://localhost:3001/activities'
   const navigate = useNavigate();
@@ -17,7 +20,7 @@ export default function FormActivity({paises, id}) {
     horas: 0,
     minutos: 0,
     season: "Season",
-    paises:[]
+    paises:[id]
   })
   const dispatch = useDispatch();
 
@@ -83,12 +86,22 @@ export default function FormActivity({paises, id}) {
   }
 
   function handlePaises(e){
+    if(form.paises.includes(e.target.value)){
+      alert('Este pais ya existe')
+      return;
+    }
     setForm((state)=>({
       ...state,
       paises: [...state.paises, e.target.value]
     }))
   }
-  // console.log(form.paises)
+  function deletePais(e){
+    const id = e.target.id
+    setForm((state)=>({
+      ...state,
+      paises: state.paises.filter((pais)=>pais !== id)
+    }))
+  }
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -110,6 +123,7 @@ export default function FormActivity({paises, id}) {
           .then(res=>{
             // console.log(res.data.message)
             navigate('/home')
+            window.location.reload();
             dispatch(modal('none'))
           })
           .catch(error=>console.log(error.response.data.message, element))
@@ -161,17 +175,17 @@ export default function FormActivity({paises, id}) {
           <div className='selectPaises'>
           <label htmlFor="paises">
             <select name="paises" defaultValue='all' onChange={handlePaises}>
-              <option value="all">Selecciona los paises</option>
+              <option value="all" disabled='disabled'>Selec. Paises</option>
               {paises.map((pais) => (
                 <option key={pais.id} value={pais.id}>{pais.name}</option>
               ))}
             </select>
           </label>
-          <div className='listPiases'>
+          <div className='listaPaises'>
             {form.paises.length === 0 ? 
-            (<p>Aun no hay paises seleccionados</p>):
+            (<span style={{margin:'0px auto'}}>Aun no hay paises seleccionados</span>):
             (form.paises.map((pais)=>(
-              <p key={pais}>{pais}</p>  
+              <p key={pais}>{pais}<button onClick={deletePais} id={pais} className='iconClose'>✘</button></p>  
             )))  
             }
           </div>

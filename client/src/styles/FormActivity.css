@@ -60,6 +60,41 @@
     border: none;
 }
 
+.selectPaises{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+.selectPaises select{
+    width: 176px;
+    height: fit-content;
+}
+.listaPaises{
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+.listaPaises p{
+    border: 1px solid rgb(0, 255, 0);
+    border-radius: 10px;
+    background-color: rgba(0, 255, 0, 0.5);
+    padding: 1px 4px;
+    margin: 3px;
+    width: fit-content;
+    height: fit-content;
+}
+.iconClose{
+    margin-left: 5px;
+    cursor: pointer;
+    transition: all .3s;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+}
+.iconClose:hover{
+    color: red;
+}
+
 .modalContainer form input[type='submit'], .closeModal{
     width: fit-content;
     padding: 0px 15px;
