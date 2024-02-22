@@ -2,18 +2,17 @@ import '../styles/FormActivity.CSS'
 import { modal } from '../redux/actions'
 import { useDispatch } from 'react-redux'
 import { useState, React, useEffect } from 'react'
-import validate from '../helpers/validaciones'
-import axios from 'axios'
+import {validate} from '../helpers/validaciones'
+import alertas from '../helpers/alerts'
 import { useNavigate } from 'react-router-dom'
 
 export default function FormActivity({paises, id}) { 
   paises.sort((a, b)=>{
     return a.name.localeCompare(b.name)
   })
+  
 
-  const URLActivitites = 'http://localhost:3001/activities'
   const navigate = useNavigate();
-  const [errores, setErrores] = useState([])
   const [form, setForm] = useState({
     name: '',
     dificult: 1,
@@ -103,34 +102,25 @@ export default function FormActivity({paises, id}) {
     }))
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
+
     const errores = validate(form)
     if(errores.length > 0){
-      setErrores(errores)
       alert(errores[0])
     } else {
-      for (let i = 0; i < form.paises.length; i++) {
-        const element ={
-          name: form.name,
-          dificult: form.dificult,
-          duration: form.horas + ':' + (form.minutos < 10 ? '0' + form.minutos : form.minutos),
-          season: form.season,
-          idPais: form.paises[i]
-        };
-        // console.log(element)
-        axios.post(URLActivitites, element)
-          .then(res=>{
-            // console.log(res.data.message)
-            navigate('/home')
-            window.location.reload();
-            dispatch(modal('none'))
-          })
-          .catch(error=>console.log(error.response.data.message, element))
+      const message = await alertas(form)
+        if(message[1]){
+          alert(message[0])
+          dispatch(modal('none'))
+          navigate('/home')
+          window.location.reload();
+        } else {
+          alert(message[0])
+        }
       }
-    }
   }
-
+  
   function closeModal(e) {
     e.preventDefault()
     dispatch(modal('none'))
@@ -156,9 +146,10 @@ export default function FormActivity({paises, id}) {
 
           <label className='duration' htmlFor="duration">Duration (In Hours)
             <div className='horas'>
-              <input type="number" name='horas' onChange={handleHour} value={form.horas}/>:
+              <input type="number" name='horas' onChange={handleHour} value={form.horas}/>
+              <span>:</span>
               <input type="number" name='minutos' onChange={handelMinutes} value={form.minutos}/>
-              Hrs
+              <span>Hrs</span>
             </div>
           </label>
 

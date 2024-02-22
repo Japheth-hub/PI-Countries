@@ -7,7 +7,8 @@ const initialState = {
     activities:[],
     pagina: [],
     title: "",
-    modal:"none"
+    modal:"none",
+    errores: []
 }
 
 export default function reducer(state = initialState, action){

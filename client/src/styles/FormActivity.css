@@ -74,6 +74,7 @@
     font-size: 1rem;
     display: flex;
     flex-wrap: wrap;
+    margin-right: 10px;
 }
 .listaPaises p{
     border: 1px solid rgb(0, 255, 0);
@@ -119,4 +120,38 @@
     color: white;
     font-weight: bold;
     text-shadow: 2px 0px 2px black, 0px 2px 2px black, -2px 0px 2px black, 0px -2px 2px black;
+}
+
+@media screen and (max-width: 740px) {
+    .modalContainer{
+        width: 450px;
+    }
+    .modalContainer form{
+        width: 100%;
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .modalContainer form label,
+    .modalContainer form span,
+    .modalContainer form h3{
+        font-size: 1.3rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .modalContainer{
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 410px) {
+    .modalContainer form input[type='text'],
+    .modalContainer form input[type='range']{
+        width: 50%;
+    }
+    .modalContainer form .selectPaises select{
+        width: 120px;
+    }
 }

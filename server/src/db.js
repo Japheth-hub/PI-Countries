@@ -1,17 +1,12 @@
-require("dotenv").config();
 const { Sequelize } = require("sequelize");
-const modelCountry = require('./models/Country');
-const modelActivity = require('./models/Activity');
-
 const fs = require('fs');
 const path = require('path');
-const {
-  DB_USER, DB_PASSWORD, DB_HOST,
-} = process.env;
+require("dotenv").config();
+const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/countries`, {
-  logging: false, 
-  native: false, 
+  logging: false,
+  native: false,
 });
 const basename = path.basename(__filename);
 

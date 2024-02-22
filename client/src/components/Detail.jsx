@@ -1,6 +1,6 @@
 import React from 'react'
 import '../styles/Detail.css'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -11,10 +11,7 @@ import {modal} from '../redux/actions'
 
 export default function Detail() {
   const { id } = useParams();
-  // Obteniendo pais de la store
-  // const paises = useSelector(state => state.pagina)
-  // const pais = paises.find((pais) => pais.id === id)
-
+  const navigate = useNavigate()
   const [pais, setPais] = useState({})
   const [load, setLoad] = useState(true)
   const [allPaises, setAllPaises] = useState([])
@@ -51,8 +48,9 @@ export default function Detail() {
           setLoad(false)
         }, 1000);
       } catch (error) {
-        alert("Error al mostra pais", error)
+        navigate('/home')
         setLoad(false)
+        alert(error.response.data.error)
       }
     }
     getPais();

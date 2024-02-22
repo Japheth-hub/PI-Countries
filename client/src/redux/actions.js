@@ -14,7 +14,7 @@ export const paises = ()=>{
                 payload: data
             });
         } catch (error) {
-            console.error(`Tenemos este error : ${error}`)
+            console.error(error.response.data.error)
         }
     };
 };
@@ -28,7 +28,7 @@ export const coincidencia = (text) => {
                 payload: data
             });
         } catch (error) {
-            console.error(`Tenemos este error : ${error}`)
+            alert(error.response.data.error)
         }
     };
 };
@@ -42,7 +42,7 @@ export const actividad = ()=>{
                 payload: data
             })
         } catch (error) {
-            console.log('Tenemos este error : ' + error)
+            console.log(error.response.data.error)
         }
     }
 }

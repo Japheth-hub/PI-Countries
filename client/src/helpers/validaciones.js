@@ -1,4 +1,4 @@
-export default function validate(datos) {
+export function validate(datos) {
     const { name, horas, minutos, season, paises } = datos
     const regex = /^[a-zA-Z0-9\s]{5,30}$/;
     const errores = [];
@@ -9,4 +9,17 @@ export default function validate(datos) {
     if (paises.length === 0) { errores.push('No se han seleccionado Paises para esta actividad') }
 
     return errores;
+}
+
+export function validateSeacrh(search){
+    const errorSearch = []
+    const regex = /^[a-zA-Z\s]{1,20}$/;
+    if(search === ""){
+        errorSearch.push('El campo de busqueda esta vacio')
+    }
+    if(!regex.test(search)){
+        errorSearch.push('No ingresar carateres numericos ni caracteres especiales')
+    }
+
+    return errorSearch;
 }

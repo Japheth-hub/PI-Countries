@@ -2,6 +2,7 @@ import "../styles/Navbar.css"
 import React from "react"
 import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
+import {validateSeacrh} from '../helpers/validaciones'
 import { paises, coincidencia, continente, actividad, filterActivity, updateState, listaPagina, title } from "../redux/actions.js"
 
 
@@ -35,6 +36,11 @@ export default function Navbar() {
   }
 
   function searchPais(text) {
+    const errores = validateSeacrh(search)
+    if(errores.length > 0){
+      alert(errores[0])
+      return
+    }
     dispatch(coincidencia(text))
     dispatch(title(text))
     setSearch("");

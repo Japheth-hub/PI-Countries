@@ -54,11 +54,12 @@
 
 .detailCountry{
     width: 50%;
+    min-width: 300px;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 400px;
     margin: 5px;
     border-radius: 10px;
     border: 2px solid white;
@@ -86,7 +87,7 @@
 
 .activityTable{
     width: 50%;
-    min-width: 400px;
+    min-width: 300px;
     margin: 5px;
     display: flex;
     flex-direction: column;
@@ -143,4 +144,43 @@ tbody{
     width: 100%;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+
+
+@media screen and (max-width: 425px){
+    .actions{
+        display: flex;
+        flex-direction: column;
+    }
+    .actions h3{
+        width: 100%;
+        text-align: center;
+    }
+    .detailCountry,
+    .activityTable{
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .detailCountry ul li i{
+        font-size: 1.5rem;
+    }
+    th, td{
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .details{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .detailCountry,
+    .activityTable{
+        width: 70%;
+    }
 }

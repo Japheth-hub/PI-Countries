@@ -6,9 +6,9 @@ const postActivities = require('./postActivities');
 
 
 module.exports = {
-    getCountries,
-    getPais,
-    getPaisName,
-    getActivities,
-    postActivities
+  getCountries,
+  getPais,
+  getPaisName,
+  getActivities,
+  postActivities
 }
