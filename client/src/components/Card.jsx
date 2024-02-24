@@ -1,8 +1,8 @@
 import React from 'react'
 import '../styles/Card.css'
 
-export default function Card({ id, name, population, subregion, area, capital, continent, flags, Activities }) {
-  // console.log(id, name, population, subregion, area, capital, continent, flags, Activities)
+export default function Card({ name, population, continent, flags }) {
+
   return (
     <>
       <div className='intro'>
@@ -23,6 +23,6 @@ export default function Card({ id, name, population, subregion, area, capital, c
           <p>{population}</p>
         </div>
       </div>
-  </>
+    </>
   )
 }

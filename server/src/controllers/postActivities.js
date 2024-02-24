@@ -4,9 +4,9 @@ const { Country, Activity } = require('../db');
 module.exports = async function newActivities(req, res) {
   try {
 
-    const { name, dificult, duration, season, idPais } = req.body;
+    const { name, dificult, duration, season, paises } = req.body;
 
-    if (![name, dificult, duration, season, idPais].every(Boolean)) {
+    if (![name, dificult, duration, season, paises].every(Boolean)) {
       res.status(401).json({ message: 'Faltan datos' })
       return;
     }
@@ -15,15 +15,11 @@ module.exports = async function newActivities(req, res) {
       where: { name },
       defaults: { dificult, duration, season }
     });
-
-    const pais = await Country.findByPk(idPais)
-
-    if (!activity || !pais) {
-      res.status(404).json({ message: 'Actividad o país no encontrado' });
-      return;
+    
+    for(let idPais of paises){
+      const pais = await Country.findByPk(idPais)
+      await pais.addActivity(activity)
     }
-
-    await pais.addActivity(activity)
 
     if (create) {
       res.status(200).json({ message: 'Actividad creada con exito' })

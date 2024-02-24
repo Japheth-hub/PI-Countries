@@ -2,14 +2,13 @@ import "../styles/Navbar.css"
 import React from "react"
 import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import {validateSeacrh} from '../helpers/validaciones'
-import { paises, coincidencia, continente, actividad, filterActivity, updateState, listaPagina, title } from "../redux/actions.js"
+import SearchBar from './SearchBar'
+import { paises, continente, actividad, filterActivity, updateState, listaPagina, title } from "../redux/actions.js"
 
 
 export default function Navbar() {
 
   const [page, setPage] = useState(1)
-  const [search, setSearch] = useState("")
   const selectPaises = useSelector(state => state.allCountries);
   const selectActividades = useSelector(state => state.allActivities);
   const dispatch = useDispatch();
@@ -31,57 +30,40 @@ export default function Navbar() {
     setPage(parseInt(e.target.value))
   }
 
-  function handleSearch(e) {
-    setSearch(e.target.value)
-  }
-
-  function searchPais(text) {
-    const errores = validateSeacrh(search)
-    if(errores.length > 0){
-      alert(errores[0])
-      return
-    }
-    dispatch(coincidencia(text))
-    dispatch(title(text))
-    setSearch("");
-    setPage(1)
-  }
-
   function allPaises() {
     dispatch(paises())
     dispatch(title("All Countries"))
-    setPage(1)
   }
 
   function hanldeContinent(e) {
     dispatch(continente(e.target.value));
     dispatch(title(e.target.value))
-    setPage(1)
     e.target.value = "continente"
   }
 
   function handleActivity(e) {
     dispatch(filterActivity(e.target.value))
     dispatch(title(e.target.value))
-    setPage(1)
     e.target.value = "activity"
   }
 
   function handleAlfabetic(e) {
     dispatch(updateState(e.target.value, "alfabetic"))
-    setPage(1)
     e.target.value = "alfabetic"
   }
   function handlePopulation(e) {
     dispatch(updateState(e.target.value, "population"))
-    setPage(1)
     e.target.value = "population"
   }
 
   useEffect(() => {
-    if(selectPaises.length === 0) allPaises()
-    if(selectActividades.length === 0)dispatch(actividad())
+    if (selectPaises.length === 0) allPaises()
+    if (selectActividades.length === 0) dispatch(actividad())
   }, [])
+
+  useEffect(() => {
+    setPage(1)
+  }, [selectPaises])
 
   useEffect(() => {
     if (selectPaises.length > 0) {
@@ -94,11 +76,7 @@ export default function Navbar() {
     <div className="Navbar">
 
       <div className="searchBar">
-        <div className="search">
-          <input type="text" placeholder="Buscar coincidencia..." value={search} onChange={handleSearch} />
-          <button onClick={() => { searchPais(search) }}>Search</button>
-        </div>
-        <button onClick={() => { allPaises() }}>Ver Todos</button>
+        <SearchBar />
       </div>
 
       <div className="pageAndFilters">

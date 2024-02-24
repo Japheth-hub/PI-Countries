@@ -1,27 +1,26 @@
 import '../styles/FormActivity.CSS'
-import { modal } from '../redux/actions'
 import { useDispatch } from 'react-redux'
-import { useState, React, useEffect } from 'react'
-import {validate} from '../helpers/validaciones'
-import alertas from '../helpers/alerts'
+import { useState, React } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { modal } from '../redux/actions'
+import { validate } from '../helpers/validaciones'
+import createActivity from '../helpers/createActivity'
 
-export default function FormActivity({paises, id}) { 
-  paises.sort((a, b)=>{
+export default function FormActivity({ paises, id }) {
+  paises.sort((a, b) => {
     return a.name.localeCompare(b.name)
   })
-  
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [form, setForm] = useState({
     name: '',
     dificult: 1,
     horas: 0,
     minutos: 0,
     season: "Season",
-    paises:[id]
+    paises: [id]
   })
-  const dispatch = useDispatch();
 
   function handleName(e) {
     setForm((state) => ({
@@ -42,7 +41,7 @@ export default function FormActivity({paises, id}) {
       ...state,
       horas: Number(e.target.value)
     }))
-    if(e.target.value < 0){
+    if (e.target.value < 0) {
       setForm((state) => ({
         ...state,
         horas: 0
@@ -50,8 +49,8 @@ export default function FormActivity({paises, id}) {
     }
   }
 
-  function handelMinutes(e){
-    if(form.horas === 0 && e.target.value < 0){
+  function handelMinutes(e) {
+    if (form.horas === 0 && e.target.value < 0) {
       setForm((state) => ({
         ...state,
         minutos: 0
@@ -62,13 +61,13 @@ export default function FormActivity({paises, id}) {
       ...state,
       minutos: Number(e.target.value)
     }))
-    if(e.target.value < 0){
+    if (e.target.value < 0) {
       setForm((state) => ({
         ...state,
         horas: Number(state.horas) - 1,
         minutos: 59
       }))
-    } else if(e.target.value >= 60){
+    } else if (e.target.value >= 60) {
       setForm((state) => ({
         ...state,
         horas: Number(state.horas) + 1,
@@ -77,55 +76,54 @@ export default function FormActivity({paises, id}) {
     }
   }
 
-  function handleSeason(e){
-    setForm((state)=>({
+  function handleSeason(e) {
+    setForm((state) => ({
       ...state,
       season: e.target.value
     }))
   }
 
-  function handlePaises(e){
-    if(form.paises.includes(e.target.value)){
+  function handlePaises(e) {
+    if (form.paises.includes(e.target.value)) {
       alert('Este pais ya existe')
       return;
     }
-    setForm((state)=>({
+    setForm((state) => ({
       ...state,
       paises: [...state.paises, e.target.value]
     }))
   }
-  function deletePais(e){
+
+  function deletePais(e) {
     const id = e.target.id
-    setForm((state)=>({
+    setForm((state) => ({
       ...state,
-      paises: state.paises.filter((pais)=>pais !== id)
+      paises: state.paises.filter((pais) => pais !== id)
     }))
   }
 
   async function handleSubmit(e) {
     e.preventDefault()
-
     const errores = validate(form)
-    if(errores.length > 0){
+    if (errores.length > 0) {
       alert(errores[0])
     } else {
-      const message = await alertas(form)
-        if(message[1]){
-          alert(message[0])
-          dispatch(modal('none'))
-          navigate('/home')
-          window.location.reload();
-        } else {
-          alert(message[0])
-        }
+      const message = await createActivity(form)
+      if(message[0]){
+        alert(message[1])
+        dispatch(modal('none'))
+        navigate('/home')
+        window.location.reload();
+      } else {
+        alert(message[1])
       }
+    }
   }
-  
+
   function closeModal(e) {
     e.preventDefault()
     dispatch(modal('none'))
   }
-
 
 
   return (
@@ -144,26 +142,26 @@ export default function FormActivity({paises, id}) {
           <input type="range" min="1" max="5" value={form.dificult} onChange={handleDificutl} />
         </label>
 
-          <label className='duration' htmlFor="duration">Duration (In Hours)
-            <div className='horas'>
-              <input type="number" name='horas' onChange={handleHour} value={form.horas}/>
-              <span>:</span>
-              <input type="number" name='minutos' onChange={handelMinutes} value={form.minutos}/>
-              <span>Hrs</span>
-            </div>
-          </label>
+        <label className='duration' htmlFor="duration">Duration (In Hours)
+          <div className='horas'>
+            <input type="number" name='horas' onChange={handleHour} value={form.horas} />
+            <span>:</span>
+            <input type="number" name='minutos' onChange={handelMinutes} value={form.minutos} />
+            <span>Hrs</span>
+          </div>
+        </label>
 
-          <label htmlFor="season">Select Season
-            <select name="season" defaultValue='Season' onChange={handleSeason}>
-              <option value="Season" disabled='disabled'>Season</option>
-              <option value="Summer">Summer</option>
-              <option value="Autumn">Autumn</option>
-              <option value="Winter">Winter</option>
-              <option value="Spring">Spring</option>
-            </select>
-          </label>
+        <label htmlFor="season">Select Season
+          <select name="season" defaultValue='Season' onChange={handleSeason}>
+            <option value="Season" disabled='disabled'>Season</option>
+            <option value="Summer">Summer</option>
+            <option value="Autumn">Autumn</option>
+            <option value="Winter">Winter</option>
+            <option value="Spring">Spring</option>
+          </select>
+        </label>
 
-          <div className='selectPaises'>
+        <div className='selectPaises'>
           <label htmlFor="paises">
             <select name="paises" defaultValue='all' onChange={handlePaises}>
               <option value="all" disabled='disabled'>Selec. Paises</option>
@@ -173,18 +171,18 @@ export default function FormActivity({paises, id}) {
             </select>
           </label>
           <div className='listaPaises'>
-            {form.paises.length === 0 ? 
-            (<span style={{margin:'0px auto'}}>Aun no hay paises seleccionados</span>):
-            (form.paises.map((pais)=>(
-              <p key={pais}>{pais}<button onClick={deletePais} id={pais} className='iconClose'>✘</button></p>  
-            )))  
+            {form.paises.length === 0 ?
+              (<span style={{ margin: '0px auto' }}>Aun no hay paises seleccionados</span>) :
+              (form.paises.map((pais) => (
+                <p key={pais}>{pais}<button onClick={deletePais} id={pais} className='iconClose'>✘</button></p>
+              )))
             }
           </div>
-          </div>
+        </div>
 
         <div className='botones'>
-          <button className='closeModal' onClick={closeModal} style={{backgroundColor:'red'}}>Close</button>
-          <input type="submit" value="Create" style={{backgroundColor:'green'}} />
+          <button className='closeModal' onClick={closeModal} style={{ backgroundColor: 'red' }}>Close</button>
+          <input type="submit" value="Create" style={{ backgroundColor: 'green' }} />
         </div>
 
       </form>
