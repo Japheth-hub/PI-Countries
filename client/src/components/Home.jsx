@@ -13,6 +13,7 @@ export default function home() {
     <div className="home">
       <Navbar />
       <Cards title={title} pagina={selectPagina} />
+      <footer>Creado y Desarrollado por Angel Ramirez &copy;</footer>
     </div>
   )
 }

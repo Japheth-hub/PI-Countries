@@ -6,6 +6,19 @@
     display: flex;
     flex-direction: column;
     overflow-x: scroll;
+}
 
+footer{
+    text-align: end;
+    font-size: 1.3rem;
+    margin-right: 50px;
+}
+
+@media screen and (max-width: 388px){
+    footer{
+        text-align: center;
+        margin: 0px;
+        font-size: 1.1rem;
+    }
 }
 
