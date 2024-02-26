@@ -33,10 +33,12 @@
     align-items: center;
     min-height: 40px;
     text-align: center;
-    font-size: 1.1rem;
     color: white;
     text-shadow: 2px 0px 2px black, 0px 2px 2px black, -2px 0px 2px black, 0px -2px 2px black;
     border-radius: 10px;
+}
+.namePais h4{
+    font-size: 1.1rem;
 }
 .imgFlag{
     width: 100%;
@@ -90,4 +92,12 @@
 }
 
 
+@media screen and (max-width: 640px) {
+    .namePais h4{
+        font-size: 1.5rem;
+    }
+    .divInfo p{
+        font-size: 1.2rem;
+    }
+}
 
