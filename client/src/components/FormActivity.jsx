@@ -1,4 +1,4 @@
-import '../styles/FormActivity.CSS'
+import '../styles/FormActivity.css'
 import { useDispatch } from 'react-redux'
 import { useState, React } from 'react'
 import { useNavigate } from 'react-router-dom'
