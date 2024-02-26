@@ -16,12 +16,11 @@ module.exports = async function newActivities(req, res) {
       defaults: { dificult, duration, season }
     });
     
-    for(let idPais of paises){
-      const pais = await Country.findByPk(idPais)
-      await pais.addActivity(activity)
-    }
-
     if (create) {
+      for(let idPais of paises){
+        const pais = await Country.findByPk(idPais)
+        await pais.addActivity(activity)
+      }
       res.status(200).json({ message: 'Actividad creada con exito' })
     } else {
       res.status(300).json({ message: `Esta actividad ya existe` })
