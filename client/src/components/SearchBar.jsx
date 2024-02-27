@@ -1,3 +1,4 @@
+import "../styles/SearchBar.css"
 import {React, useState} from 'react'
 import {validateSeacrh} from '../helpers/validaciones'
 import { useDispatch } from "react-redux"

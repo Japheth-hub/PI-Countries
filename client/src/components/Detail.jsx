@@ -28,7 +28,7 @@ export default function Detail() {
       })
       setPaisesSelect(array)
     } catch (error) {
-      console.log(error)
+      console.log(error.response.data.error)
     }
   }
 

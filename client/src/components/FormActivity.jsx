@@ -15,7 +15,7 @@ export default function FormActivity({ paises, id }) {
   const dispatch = useDispatch();
   const [form, setForm] = useState({
     name: '',
-    dificult: 1,
+    dificult: 0,
     horas: 0,
     minutos: 0,
     season: "Season",
@@ -139,7 +139,7 @@ export default function FormActivity({ paises, id }) {
 
         <label htmlFor="dificult">
           <span>Dificult : {form.dificult}</span>
-          <input type="range" min="1" max="5" value={form.dificult} onChange={handleDificutl} />
+          <input type="range" min="0" max="5" value={form.dificult} onChange={handleDificutl} />
         </label>
 
         <label className='duration' htmlFor="duration">Duration (In Hours)

@@ -19,29 +19,6 @@
     align-items: center;
     margin-bottom: 10px;
 }
-.search{
-    display: flex;
-    margin: 0px 20px;
-    border-radius: 10px;
-    border: 3px solid black;
-    overflow: hidden;
-    box-shadow: 0px 0px 10px white;
-}
-.search input{
-    padding: 2px;
-    font-size: 1.1rem;
-}
-.searchBar button{
-    font-size: 1.1rem;
-    padding: 2px 10px;
-    border-radius: 10px;
-    background-color: black;
-    color: white;
-    font-weight: bold;
-    box-shadow: 0px 0px 10px white;
-    cursor: pointer;
-    transition: all .4s;
-}
 
 .pageAndFilters{
     width: 100%;
@@ -94,7 +71,6 @@
     transition: all .4s;
 }
 
-.searchBar button:hover,
 .filtros select:hover,
 .paginado button:hover{
     transform: scale(1.1);
@@ -102,14 +78,6 @@
     color: black;
 }
 
-@media screen and (max-width:640px) {
-    .search input{
-        width: 68px;
-    }
-    *{
-        font-size: 0.8rem;
-    }
-}
 
 @media screen and (max-width:470px){
     .paginado{

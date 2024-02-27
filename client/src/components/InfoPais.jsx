@@ -1,3 +1,4 @@
+import '../styles/InfoPais.css'
 import React from 'react'
 import { modal } from '../redux/actions'
 import { useDispatch } from 'react-redux'

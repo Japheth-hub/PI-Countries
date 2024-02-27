@@ -15,26 +15,20 @@
     align-items: center;
     font-size: 1.5rem;
 }
-.modalContainer form input{
-    text-align: center;
-    font-size: 1.1rem;
-}
 .modalContainer form label{
     width: 100%;
     display: flex;
     justify-content: center;
     margin: 10px 0px;
 }
-.modalContainer form input{
+.modalContainer form label input{
+    text-align: center;
+    font-size: 1.1rem;
     width: 250px;
     margin: 0px 25px;
 }
-.modalContainer form input[type='number']{
-    width: 50px;
-    margin: 0px;
-}
-.modalContainer form select,
-.modalContainer form input[type='text']{
+.modalContainer form label select,
+.modalContainer form label input[type='text']{
     padding: 0px 10px;
     font-size: 1.1rem;
     margin: 0px 10px;
@@ -55,6 +49,10 @@
     border: 1px solid black;
     padding: 0px 3px;
 }
+.horas input[type='number']{
+    width: 50px;
+    margin: 0px;
+}
 .horas input{
     margin: 0px;
     border: none;
@@ -64,7 +62,7 @@
     display: grid;
     grid-template-columns: 1fr 2fr;
 }
-.selectPaises select{
+.selectPaises label select{
     width: 176px;
     height: fit-content;
 }
@@ -96,7 +94,8 @@
     color: red;
 }
 
-.modalContainer form input[type='submit'], .closeModal{
+.botones input[type='submit'], 
+.closeModal{
     width: fit-content;
     padding: 0px 15px;
     font-weight: bold;
@@ -107,7 +106,7 @@
     cursor: pointer;
     box-shadow: 2px 2px 8px black;
 }
-.modalContainer form input[type='submit']:hover, 
+.botones input[type='submit']:hover, 
 .closeModal:hover{
     box-shadow: none;
 }
@@ -121,6 +120,8 @@
     font-weight: bold;
     text-shadow: 2px 0px 2px black, 0px 2px 2px black, -2px 0px 2px black, 0px -2px 2px black;
 }
+
+
 
 @media screen and (max-width: 740px) {
     .modalContainer{

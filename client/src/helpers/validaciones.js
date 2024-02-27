@@ -1,8 +1,9 @@
 export function validate(datos) {
-  const { name, horas, minutos, season, paises } = datos
+  const { name, dificult, horas, minutos, season, paises } = datos
   const regex = /^[a-zA-Z0-9\s]{5,30}$/;
   const errores = [];
   if (!regex.test(name)) { errores.push('Nombre debe tener entre 5 y 30 caracteres de tipo Alfanumericos') }
+  if (Number(dificult) === 0) { errores.push('La dificultad debe ser del nivel 1 (min) hasta 5 (max)')}
   if (horas > 6 ) { errores.push('Actividad debe tener un maximo de hasta 6 horas') }
   if (horas === 6 && minutos > 0) { errores.push('Actividad debe tener un maximo de hasta 6 horas') }
   if (horas === 0 && minutos < 30) { errores.push('Tiempo minimo para la actividad es de 30 Minutos') }
