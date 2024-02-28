@@ -27,7 +27,7 @@ export default function SearchBar() {
 
   function allPaises() {
     dispatch(paises())
-    dispatch(title("All Countries"))
+    dispatch(title('All Countries'))
   }
 
     return (<>
@@ -36,5 +36,6 @@ export default function SearchBar() {
             <button onClick={() => { searchPais(search) }}>Search</button>
         </div>
         <button onClick={() => { allPaises() }}>Ver Todos</button>
+        {/* <a href="http://localhost:5173/home"><button>Ver Todos</button></a> */}
     </>)
 }
