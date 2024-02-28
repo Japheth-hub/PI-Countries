@@ -31,6 +31,27 @@ export const coincidencia = (text) => {
   };
 };
 
+export const continente = (continente) => {
+  return {
+    type: CONTINENTE,
+    payload: continente
+  }
+}
+
+export const updateState = (orden, tipo) => {
+  return {
+    type: UPDATESTATE,
+    payload: { orden, tipo }
+  }
+}
+
+export const filterActivity = (activity) => {
+  return {
+    type: FILTERACTIVITY,
+    payload: activity
+  }
+}
+
 export const actividad = () => {
   return async (dispatch) => {
     try {
@@ -42,27 +63,6 @@ export const actividad = () => {
     } catch (error) {
       console.log(error.response.data.error)
     }
-  }
-}
-
-export const updateState = (orden, tipo) => {
-  return {
-    type: UPDATESTATE,
-    payload: { orden, tipo }
-  }
-}
-
-export const continente = (continente) => {
-  return {
-    type: CONTINENTE,
-    payload: continente
-  }
-}
-
-export const filterActivity = (activity) => {
-  return {
-    type: FILTERACTIVITY,
-    payload: activity
   }
 }
 

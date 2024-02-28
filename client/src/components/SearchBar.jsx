@@ -2,12 +2,14 @@ import "../styles/SearchBar.css"
 import {React, useState} from 'react'
 import {validateSeacrh} from '../helpers/validaciones'
 import { useDispatch } from "react-redux"
-import {coincidencia, paises, title} from '../redux/actions'
+import {coincidencia, title} from '../redux/actions'
+import { useNavigate } from "react-router-dom"
 
 export default function SearchBar() {
 
   const [search, setSearch] = useState("")
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
 
   function handleSearch(e) {
@@ -26,8 +28,8 @@ export default function SearchBar() {
   }
 
   function allPaises() {
-    dispatch(paises())
-    dispatch(title('All Countries'))
+    navigate('/home')
+    window.location.reload()
   }
 
     return (<>
@@ -36,6 +38,5 @@ export default function SearchBar() {
             <button onClick={() => { searchPais(search) }}>Search</button>
         </div>
         <button onClick={() => { allPaises() }}>Ver Todos</button>
-        {/* <a href="http://localhost:5173/home"><button>Ver Todos</button></a> */}
     </>)
 }

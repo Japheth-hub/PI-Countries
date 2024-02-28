@@ -4,11 +4,9 @@ const initialState = {
   allCountries: [],
   countries: [],
   allActivities: [],
-  activities: [],
   pagina: [],
   title: "",
   modal: "none",
-  errores: []
 }
 
 export default function reducer(state = initialState, action) {
@@ -58,7 +56,6 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         allActivities: action.payload,
-        activities: action.payload
       }
 
     case LISTAPAGINA:

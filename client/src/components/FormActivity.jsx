@@ -21,6 +21,7 @@ export default function FormActivity({ paises, id }) {
     season: "Season",
     paises: [id]
   })
+  const [errores, setErrores] = useState([])
 
   function handleName(e) {
     setForm((state) => ({
@@ -106,7 +107,7 @@ export default function FormActivity({ paises, id }) {
     e.preventDefault()
     const errores = validate(form)
     if (errores.length > 0) {
-      alert(errores[0])
+      setErrores(errores)
     } else {
       const message = await createActivity(form)
       if(message[0]){
@@ -130,8 +131,9 @@ export default function FormActivity({ paises, id }) {
     <div className='modalContainer'>
       <form onSubmit={handleSubmit}>
         <h3>Create Activity</h3>
-        {form.horas > 6 ? <span className='alert'>Actividad debe tener un maximo de hasta 6 Horas</span> : ""}
-        {form.horas === 6 && form.minutos > 0 ? <span className='alert'>Actividad debe tener un maximo de hasta 6 Horas</span> : ""}
+        <div className='errores'>
+          {errores.length > 0 ? errores.map((error)=> <span className='alert'>* {error}</span>) : ""} 
+        </div>
 
         <label htmlFor="name">Name Activity
           <input type="text" value={form.name} onChange={handleName} />
@@ -147,7 +149,7 @@ export default function FormActivity({ paises, id }) {
             <input type="number" name='horas' onChange={handleHour} value={form.horas} />
             <span>:</span>
             <input type="number" name='minutos' onChange={handelMinutes} value={form.minutos} />
-            <span>Hrs</span>
+            <span>Horas</span>
           </div>
         </label>
 

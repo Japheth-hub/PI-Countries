@@ -2,6 +2,8 @@
     border: 2px solid black;
     width: 70%;
     max-width: 600px;
+    max-height: 450px;
+    overflow-x: scroll;
     margin: 50px auto;
     background-color: white;
     box-shadow: 0px 0px 10px white;
@@ -111,14 +113,19 @@
     box-shadow: none;
 }
 
-.alert{
-    background-color: red;
-    border-radius: 10px;
+.errores{
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
     padding: 5px 10px;
-    text-align: center;
+}
+.alert{
+    font-size: 1rem;
+    text-align: start;
+    margin: 5px;
     color: white;
     font-weight: bold;
-    text-shadow: 2px 0px 2px black, 0px 2px 2px black, -2px 0px 2px black, 0px -2px 2px black;
+    text-shadow: 2px 0px 2px red, 0px 2px 2px red, -2px 0px 2px red, 0px -2px 2px red;
 }
 
 

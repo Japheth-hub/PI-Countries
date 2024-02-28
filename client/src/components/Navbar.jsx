@@ -69,7 +69,7 @@ export default function Navbar() {
     if (selectPaises.length > 0) {
       showPagina(selectPaises, page)
     }
-  }, [selectPaises, page, selectActividades])
+  }, [selectPaises, page])
 
 
   return (
