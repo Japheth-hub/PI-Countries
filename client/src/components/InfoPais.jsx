@@ -48,7 +48,7 @@ export default function InfoPais({ pais }) {
             })
           ) : (
             <tr>
-              <td colSpan='5'>No existen Actividades en este Pais</td>
+              <td colSpan='4'>No existen Actividades en este Pais</td>
             </tr>
           )}
         </tbody>
