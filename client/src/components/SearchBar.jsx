@@ -3,7 +3,7 @@ import {React, useState} from 'react'
 import {validateSeacrh} from '../helpers/validaciones'
 import { useDispatch } from "react-redux"
 import {coincidencia, title} from '../redux/actions'
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 
 export default function SearchBar() {
 
@@ -38,5 +38,8 @@ export default function SearchBar() {
             <button onClick={() => { searchPais(search) }}>Search</button>
         </div>
         <button id="verTodos" onClick={() => { allPaises() }}>Ver Todos</button>
+        <Link to={'/activities'}>
+          <button id="actividades">Actividades</button>
+        </Link>
     </>)
 }

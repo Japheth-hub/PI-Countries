@@ -21,8 +21,10 @@
     cursor: pointer;
     transition: all .4s;
 }
-#verTodos{
+#verTodos,
+#actividades{
     border-radius: 10px;
+    margin: 0px 5px;
 }
 .searchBar button:hover{
     transform: scale(1.1);

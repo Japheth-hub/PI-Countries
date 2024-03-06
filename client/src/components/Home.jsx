@@ -50,6 +50,8 @@ export default function Home() {
       showPagina(selectPaises, page)
     }
   }, [selectPaises, page])
+
+
   return (
     <div className="home">
       <Navbar />
@@ -58,9 +60,7 @@ export default function Home() {
 
       <div className="paginado">
         <button onClick={() => { menos(page) }}>&#10094;</button>
-        
             <span>{array.length > 0 ? array.map((item) => <button className={item === page ? 'active': ''} onClick={()=>numPagina(item)} key={item}>{item}</button>) : '1'}</span>
-          
         <button onClick={() => { mas(page) }}>&#10095;</button>
       </div>
 

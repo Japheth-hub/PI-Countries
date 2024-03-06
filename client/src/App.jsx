@@ -3,6 +3,7 @@ import {Routes, Route} from 'react-router-dom'
 import Landing from './components/Landing.jsx'
 import Home from './components/Home.jsx'
 import Detail from './components/Detail.jsx'
+import Activities from './components/Activities.jsx'
 
 function App() {
   return (
@@ -11,6 +12,10 @@ function App() {
         <Route
           path='/'
           element={<Landing />}
+        />
+        <Route
+          path='/activities'
+          element={<Activities />}
         />
         <Route 
           path='/home'
