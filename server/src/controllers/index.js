@@ -3,6 +3,8 @@ const getPais = require('./getPais');
 const getPaisName = require('./getPaisName');
 const getActivities = require('./getActivities');
 const postActivities = require('./postActivities');
+const deleteActivities = require('./deleteActivities');
+const deleteRelacion = require('./deleteRelacion');
 
 
 module.exports = {
@@ -10,5 +12,7 @@ module.exports = {
   getPais,
   getPaisName,
   getActivities,
-  postActivities
+  postActivities,
+  deleteActivities,
+  deleteRelacion
 }

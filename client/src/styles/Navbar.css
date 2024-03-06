@@ -1,43 +1,27 @@
 .Navbar{
-    width: 90%;
-    max-width: 800px;
+    width: 100%;
     margin: 0px auto;
-    padding: 5px 0px;
-    border-radius: 10px;
-    background-color:  rgba(0, 0, 0, 0) ;
-    box-shadow: 0px 0px 10px white;
+    padding: 20px 10px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    box-shadow: 0px 1px 10px white;
 }
 
-.searchBar{
-    width: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
+.searchBar,
 .pageAndFilters{
     width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-.filtros{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
+
 .filtros select{
-    font-size: 0.9rem;
-    font-weight: bold;
+    font-size: 1rem;
     margin: 0px 5px;
     border-radius: 10px;
-    padding: 2px 5px;
+    padding: 5px 5px;
     background-color: black;
     color: white;
     box-shadow: 0px 0px 10px white;
@@ -45,48 +29,12 @@
     transition: all .4s;
 }
 
-.paginado{
-    border-radius: 10px;
-    border: 2px solid black;
-    min-width: 100px;
-    overflow: hidden;
-    box-shadow: 0px 0px 10px white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.paginado input{
-    width: 37px;
-    text-align: center;
-    padding: 2px;
-    font-size: 0.9rem;
-}
-.paginado button{
-    font-size: 0.9rem;
-    font-weight: bold;
-    padding: 2px 10px;
-    background-color: black;
-    color: white;
-    cursor: pointer;
-    transition: all .4s;
-}
-
-.filtros select:hover,
-.paginado button:hover{
+.filtros select:hover{
     transform: scale(1.1);
-    background-color: white;
-    color: black;
 }
 
 
 @media screen and (max-width:470px){
-    .paginado{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        min-width: 30px;
-    }
     .Navbar{
         width: 100%;
         border-radius: 0px;

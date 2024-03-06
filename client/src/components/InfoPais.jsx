@@ -2,6 +2,8 @@ import '../styles/InfoPais.css'
 import React from 'react'
 import { modal } from '../redux/actions'
 import { useDispatch } from 'react-redux'
+import axios from 'axios';
+import { URLrelaciones } from '../helpers/endPoints';
 
 
 export default function InfoPais({ pais }) {
@@ -10,6 +12,21 @@ export default function InfoPais({ pais }) {
 
   function showModal() {
     dispatch(modal('block'))
+  }
+
+  async function borrar(e){
+    try {
+      const name = e.target.id;
+      const confirmacion = confirm('Estas seguro de que deseas eliminar la Actividad')
+      if(confirmacion) {
+        await axios.delete(`${URLrelaciones}?name=${name}&pais=${pais.id}`)
+        alert('Actividad eliminada con exito')
+        window.location.reload()
+      }
+      
+    } catch (error) {
+      alert(error)
+    }
   }
 
   return (<>
@@ -25,7 +42,7 @@ export default function InfoPais({ pais }) {
       </ul>
     </div>
     <div className='activityTable'>
-      <table className='table' border='1'>
+      <table className='table'>
         <caption>Activities</caption>
         <thead>
           <tr>
@@ -33,6 +50,7 @@ export default function InfoPais({ pais }) {
             <th>Dificult</th>
             <th>Duration</th>
             <th>Season</th>
+            <th>Options</th>
           </tr>
         </thead>
         <tbody>
@@ -43,12 +61,18 @@ export default function InfoPais({ pais }) {
                 <td>{item.dificult}</td>
                 <td>{item.duration} - Hrs</td>
                 <td>{item.season}</td>
+                <td>
+                  <div className='optionsTable'>
+                    <button className='delete' id={item.name} onClick={borrar}>✘</button>
+                    <button className='edit' id={item.name}>✏️</button>
+                  </div>
+                </td>
               </tr>
               )
             })
           ) : (
             <tr>
-              <td colSpan='4'>No existen Actividades en este Pais</td>
+              <td colSpan='5'>No existen Actividades en este Pais</td>
             </tr>
           )}
         </tbody>

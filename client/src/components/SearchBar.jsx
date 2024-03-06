@@ -34,9 +34,9 @@ export default function SearchBar() {
 
     return (<>
         <div className="search">
-            <input type="text" placeholder="Buscar coincidencia..." value={search} onChange={handleSearch} />
+            <input type="text" placeholder="Buscar por..." value={search} onChange={handleSearch} />
             <button onClick={() => { searchPais(search) }}>Search</button>
         </div>
-        <button onClick={() => { allPaises() }}>Ver Todos</button>
+        <button id="verTodos" onClick={() => { allPaises() }}>Ver Todos</button>
     </>)
 }
