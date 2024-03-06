@@ -1,16 +1,40 @@
-import { React, useEffect } from 'react'
+import { React, useEffect, useState } from 'react'
 import axios from 'axios'
 import '../styles/Activities.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { URLrelaciones, URLactivities } from '../helpers/endPoints'
-import { actividad } from '../redux/actions'
+import { URLrelaciones, URLactivities, URLcountries } from '../helpers/endPoints'
+import { actividad, modal } from '../redux/actions'
+import FormActivity from './FormActivity'
 
 
 export default function Activities() {
 
   const allActivities = useSelector(state => state.allActivities)
+  const [paisesSelect, setPaisesSelect] = useState([])
+  const displayModal = useSelector(state => state.modal)
+
+
   const dispatch = useDispatch()
+
+  function showModal() {
+    dispatch(modal('block'))
+  }
+
+  async function getPaises() {
+    try {
+      const { data } = await axios(URLcountries)
+      const array = data.map((pais) => {
+        return {
+          name: pais.name,
+          id: pais.id
+        }
+      })
+      setPaisesSelect(array)
+    } catch (error) {
+      console.log(error.response.data.error)
+    }
+  }
 
   async function deletePais(name, pais) {
     try {
@@ -42,12 +66,16 @@ export default function Activities() {
     if(allActivities.length === 0){
       dispatch(actividad())
     }
+    getPaises()
   }, [allActivities])
 
   return (
     <div className='activities'>
       <div className='head'>
         <h1>Activities</h1>
+
+        <button onClick={showModal}>Create Activity</button>
+
         <Link to={'/home'}>
           <button>Home</button>
         </Link>
@@ -65,7 +93,7 @@ export default function Activities() {
             </tr>
           </thead>
           <tbody>
-            {allActivities.length <= 0 ? <tr><td colSpan='5'>No hay Activities</td></tr>
+            {allActivities.message ? <tr><td colSpan='6'>{allActivities.message}</td></tr>
               : allActivities.map((item) => {
                 return (
                   <tr key={item.id}>
@@ -85,6 +113,11 @@ export default function Activities() {
           </tbody>
         </table>
       </div>
+
+      <div className='modal' style={{ display: displayModal }}>
+        <FormActivity paises={paisesSelect} id={'MEX'}/>
+      </div>
+
     </div>
   )
 }

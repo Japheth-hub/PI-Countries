@@ -40,7 +40,7 @@ export default function Detail() {
         getPaises()
         setTimeout(() => {
           setLoad(false)
-        }, 1000);
+        }, 500);
       } catch (error) {
         navigate('/home')
         setLoad(false)

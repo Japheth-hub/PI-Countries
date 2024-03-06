@@ -64,7 +64,6 @@ export default function InfoPais({ pais }) {
                 <td>
                   <div className='optionsTable'>
                     <button className='delete' id={item.name} onClick={borrar}>✘</button>
-                    <button className='edit' id={item.name}>✏️</button>
                   </div>
                 </td>
               </tr>

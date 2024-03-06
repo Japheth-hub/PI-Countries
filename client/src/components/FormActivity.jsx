@@ -1,7 +1,6 @@
 import '../styles/FormActivity.css'
 import { useDispatch } from 'react-redux'
 import { useState, React } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { modal } from '../redux/actions'
 import { validate } from '../helpers/validaciones'
 import createActivity from '../helpers/createActivity'
@@ -11,7 +10,6 @@ export default function FormActivity({ paises, id }) {
     return a.name.localeCompare(b.name)
   })
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [form, setForm] = useState({
     name: '',
@@ -113,7 +111,6 @@ export default function FormActivity({ paises, id }) {
       if(message[0]){
         alert(message[1])
         dispatch(modal('none'))
-        navigate('/home')
         window.location.reload();
       } else {
         alert(message[1])
