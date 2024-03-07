@@ -72,12 +72,12 @@
 }
 
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 435px) {
     .namePais h4{
         font-size: 1.5rem;
     }
     .divInfo p{
-        font-size: 1.2rem;
+        font-size: 1.3rem;
     }
 }
 

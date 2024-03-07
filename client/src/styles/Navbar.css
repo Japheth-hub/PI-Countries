@@ -1,7 +1,7 @@
 .Navbar{
     width: 100%;
     margin: 0px auto;
-    padding: 20px 10px;
+    padding: 20px 10px 10px 10px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -20,6 +20,7 @@
 .filtros select{
     font-size: 1rem;
     margin: 0px 5px;
+    width: 180px;
     border-radius: 10px;
     padding: 5px 5px;
     background-color: black;
@@ -34,12 +35,23 @@
 }
 
 
-@media screen and (max-width:470px){
+@media screen and (max-width: 435px){
     .Navbar{
-        width: 100%;
-        border-radius: 0px;
+        display: block;
+        padding: 0px;
     }
-    *{
-        font-size: 0.7rem;
+    .searchBar, .pageAndFilters{
+        display: flex;
+        padding-top: 10px;
+    }
+    .filtros{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .filtros select{
+        width: 130px;
+        margin-bottom: 10px;
     }
 }

@@ -19,13 +19,13 @@
 
 .card{
     width: 18%;
-    min-width: 200px;
+    min-width: 185px;
     color: black;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin: 5px;
+    margin: 5px auto 20px auto;
     border: 1px solid black;
     border-radius: 10px;
     overflow: hidden;

@@ -32,9 +32,9 @@
     color: black;
 }
 
-@media screen and (max-width:640px) {
+@media screen and (max-width: 435px) {
     .search input{
-        width: 68px;
+        width: 80px;
     }
     *{
         font-size: 0.8rem;

@@ -6,6 +6,7 @@ import axios from 'axios'
 import FormActivity from './FormActivity'
 import InfoPais from './InfoPais'
 import { URLcountries } from '../helpers/endPoints'
+import Loading from './Loading.jsx'
 
 
 export default function Detail() {
@@ -51,7 +52,7 @@ export default function Detail() {
   }, [])
 
   if (load) {
-    return <div className='loading'></div>
+    return <Loading />
   }
 
   return (

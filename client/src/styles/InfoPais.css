@@ -30,6 +30,9 @@
     color: #ccc;
     text-shadow: 2px 0px 2px black, 0px 2px 2px black, -2px 0px 2px black, 0px -2px 2px black;
 }
+.detailCountry ul li i{
+    color: white;
+}
 
 .activityTable{
     width: 50%;
@@ -86,11 +89,29 @@ tbody{
     background-color: rgba(255, 0, 0, 0.5);
     text-align: center;
     font-weight: bold;
-    padding: 5px;
+    padding: 2px;
     cursor: pointer;
     transition: all 0.3s;
 }
 .delete:hover{
     background-color: red;
     color:white;
+}
+
+@media screen and (max-width: 435px) {
+    .detailCountry, .activityTable{
+        width: 100%;
+    }
+    .detailCountry ul li{
+        font-size: 2rem;
+    }
+    .detailCountry ul li i{
+        font-size: 1.5rem;
+    }
+    td, th, .btnCreate{
+        font-size: 1.2rem;
+    }
+    .delete{
+        font-size: 1rem;
+    }
 }
