@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { URLrelaciones, URLactivities, URLcountries } from '../helpers/endPoints'
 import { actividad, modal } from '../redux/actions'
 import FormActivity from './FormActivity'
+import ResponsiveAct from './ResponsiveAct'
 
 
 export default function Activities() {
@@ -39,8 +40,8 @@ export default function Activities() {
   async function deletePais(name, pais) {
     try {
       const confirmmacion = confirm('Estas apunto de eliminar este pais de la actividad')
-      if(confirmmacion){
-        const {data} = await axios.delete(`${URLrelaciones}?name=${name}&pais=${pais}`)
+      if (confirmmacion) {
+        const { data } = await axios.delete(`${URLrelaciones}?name=${name}&pais=${pais}`)
         alert(data.message)
         window.location.reload()
       }
@@ -49,11 +50,11 @@ export default function Activities() {
     }
   }
 
-  async function deleteActivity(name){
+  async function deleteActivity(name) {
     try {
       const confirmacio = confirm('Estas apunto de eliminar esta actividad de forma permanente')
-      if(confirmacio){
-        const {data} = await axios.delete(`${URLactivities}/${name}`)
+      if (confirmacio) {
+        const { data } = await axios.delete(`${URLactivities}/${name}`)
         alert(data)
         window.location.reload()
       }
@@ -63,7 +64,7 @@ export default function Activities() {
   }
 
   useEffect(() => {
-    if(allActivities.length === 0){
+    if (allActivities.length === 0) {
       dispatch(actividad())
     }
     getPaises()
@@ -74,11 +75,12 @@ export default function Activities() {
       <div className='head'>
         <h1>Activities</h1>
 
-        <button onClick={showModal}>Create Activity</button>
-
         <Link to={'/home'}>
           <button>Home</button>
         </Link>
+
+        <button onClick={showModal}>Create Activity</button>
+
       </div>
       <div className='listActivities'>
         <table>
@@ -103,10 +105,10 @@ export default function Activities() {
                     <td>{item.season}</td>
                     <td className='listCountries'>{item.Countries.length <= 0 ? 'No hay paises' : item.Countries.map((pais) => {
                       return (
-                        <p key={pais.id}>{pais.name}<button onClick={()=>{deletePais(item.name, pais.id)}} id={pais.id} className='iconClose'>✘</button></p>
+                        <p key={pais.id}>{pais.name}<button onClick={() => { deletePais(item.name, pais.id) }} id={pais.id} className='iconClose'>✘</button></p>
                       )
                     })}</td>
-                    <td><button onClick={()=>{deleteActivity(item.name)}} className='btn-delete'>Delete</button></td>
+                    <td><button onClick={() => { deleteActivity(item.name) }} className='btn-delete'>Delete</button></td>
                   </tr>
                 )
               })}
@@ -114,8 +116,11 @@ export default function Activities() {
         </table>
       </div>
 
+      <div className='divResponsive'>
+        <ResponsiveAct />
+      </div>
       <div className='modal' style={{ display: displayModal }}>
-        <FormActivity paises={paisesSelect} id={'MEX'}/>
+        <FormActivity paises={paisesSelect} id={'MEX'} />
       </div>
 
     </div>

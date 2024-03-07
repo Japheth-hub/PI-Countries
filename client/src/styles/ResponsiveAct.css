@@ -1,0 +1,19 @@
+@media screen and (max-width: 435px) {
+    .responsive{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .optionsResponsive{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .btnRes{
+        width: fit-content;
+        font-size: 1.2rem;
+        padding: 2px 5px;
+        border-radius: 10px;
+        font-weight: bold;
+    }
+}

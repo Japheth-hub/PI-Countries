@@ -24,7 +24,7 @@ export default function FormActivity({ paises, id }) {
   function handleName(e) {
     setForm((state) => ({
       ...state,
-      name: e.target.value
+      name: e.target.value.trim()
     }))
   }
 

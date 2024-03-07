@@ -99,3 +99,24 @@
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.8);
 }
+.divResponsive{
+    display: none;
+}
+
+
+@media screen and (max-width:818px) {
+    .listActivities{
+        display: none;
+    }
+    .divResponsive, .responsive{
+        display: flex;
+    }
+}
+@media screen and (max-width: 435px) {
+
+    .head{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+}

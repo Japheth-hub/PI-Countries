@@ -4,6 +4,7 @@ import Landing from './components/Landing.jsx'
 import Home from './components/Home.jsx'
 import Detail from './components/Detail.jsx'
 import Activities from './components/Activities.jsx'
+import Activity from './components/Activity.jsx'
 
 function App() {
   return (
@@ -26,6 +27,10 @@ function App() {
         <Route
           path='/detail/:id'
           element={<Detail/>}
+        />
+        <Route
+          path='/activity/:name'
+          element={<Activity />}
         />
         <Route
           path='*'

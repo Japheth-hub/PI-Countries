@@ -1,6 +1,6 @@
 .search{
     display: flex;
-    margin: 0px 20px;
+    margin: 0px 5px;
     border-radius: 10px;
     border: 1px solid black;
     overflow: hidden;
@@ -8,11 +8,9 @@
 }
 .search input{
     padding: 2px;
-    font-size: 1.1rem;
-    width: 150px;
+    width: 100px;
 }
 .searchBar button{
-    font-size: 1rem;
     padding: 2px 10px;
     background-color: black;
     color: white;
@@ -24,7 +22,6 @@
 #verTodos,
 #actividades{
     border-radius: 10px;
-    margin: 0px 5px;
 }
 .searchBar button:hover{
     transform: scale(1.1);
