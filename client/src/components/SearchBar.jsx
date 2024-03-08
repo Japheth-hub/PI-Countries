@@ -29,7 +29,7 @@ export default function SearchBar() {
 
   function allPaises() {
     navigate('/home')
-    window.location.reload()
+    // window.location.reload()
   }
 
     return (<>
