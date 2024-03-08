@@ -1,7 +1,7 @@
 const server = require("./src/server");
 const { conn } = require('./src/db.js');
 const guardarDatos = require('./src/helpers/guardarDatos')
-const port = process.env.PORT || 3001;
+const port = process.env.PORT;
 
 
 conn.sync({ force: true })
