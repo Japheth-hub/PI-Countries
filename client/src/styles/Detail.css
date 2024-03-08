@@ -62,18 +62,12 @@
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-
-
-
-@media screen and (max-width: 435px){
-    .actions{
-        display: flex;
-        justify-content: center;
-    }
+@media screen and (max-width: 890px) {
     .details{
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
 }
+
 

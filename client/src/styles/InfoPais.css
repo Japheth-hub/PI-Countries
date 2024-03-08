@@ -1,6 +1,5 @@
 .detailCountry{
     width: 50%;
-    min-width: 300px;
     max-width: 400px;
     display: flex;
     flex-direction: column;
@@ -97,6 +96,30 @@ tbody{
     background-color: red;
     color:white;
 }
+
+@media screen and (max-width: 890px) {
+    .detailCountry{
+        max-width: 600px;
+        width: 500px;
+    }
+    .activityTable{
+        width: 90%;
+    }
+    .detailCountry ul li{
+        font-size: 2rem;
+    }
+    .detailCountry ul li i{
+        font-size: 1.5rem;
+    }
+    td, th, .btnCreate{
+        font-size: 1.2rem;
+    }
+    .delete{
+        font-size: 1rem;
+    }
+}
+
+
 
 @media screen and (max-width: 435px) {
     .detailCountry, .activityTable{

@@ -104,7 +104,7 @@
 }
 
 
-@media screen and (max-width:818px) {
+@media screen and (max-width:760px) {
     .listActivities{
         display: none;
     }

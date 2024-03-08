@@ -131,31 +131,39 @@
 
 
 
-@media screen and (max-width: 740px) {
+@media screen and (max-width: 890px) {
     .modalContainer{
-        width: 450px;
+        width: 600px;
     }
     .modalContainer form{
         width: 100%;
-        font-size: 1.5rem;
+        font-size: 1.8rem;
     }
+    .modalContainer form label,
+    .modalContainer form select,
+    .modalContainer form span,
+    .modalContainer form h3{
+        font-size: 1.8rem;
+    }
+
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 430px) {
+
     .modalContainer form label,
     .modalContainer form span,
     .modalContainer form h3{
         font-size: 1.3rem;
     }
-}
 
-@media screen and (max-width: 500px) {
     .modalContainer{
-        width: 90%;
+        width: 95%;
     }
-}
+    .modalContainer form{
+        width: 100%;
+        font-size: 1.5rem;
+    }
 
-@media screen and (max-width: 410px) {
     .modalContainer form input[type='text'],
     .modalContainer form input[type='range']{
         width: 50%;
