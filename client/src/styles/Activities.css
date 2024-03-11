@@ -24,7 +24,7 @@
     text-shadow: 2px 0px 2px black, 0px 2px 2px black, -2px 0px 2px black, 0px -2px 2px black;
 }
 .head button{
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-weight: bold;
     border-radius: 10px;
     padding: 1.5px 20px;
@@ -76,6 +76,12 @@
     float: left;
 }
 
+.listCountries p i{
+    text-decoration: none;
+    font-family:sans-serif, 'Courier New', Courier, monospace;
+    color: white
+}
+
 .btn-delete{
     background-color: rgba(255, 0, 0, 0.5);
     width: fit-content;
@@ -104,6 +110,12 @@
 }
 
 
+@media screen and (max-width: 820px) {
+    .head button{
+        font-size: 0.75rem;
+    }
+}
+
 @media screen and (max-width:760px) {
     .listActivities{
         display: none;
@@ -118,5 +130,7 @@
         display: flex;
         flex-wrap: wrap;
     }
-    
+    .head button{
+        font-size: 1.5rem;
+    }
 }

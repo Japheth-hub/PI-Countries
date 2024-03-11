@@ -1,4 +1,4 @@
-@media screen and (max-width: 435px) {
+@media screen and (max-width: 760px) {
     .responsive{
         width: 100%;
         display: flex;
@@ -15,5 +15,11 @@
         padding: 2px 5px;
         border-radius: 10px;
         font-weight: bold;
+    }
+}
+@media screen and (max-width: 380px) {
+    .responsive thead tr th,
+    .responsive tbody tr td{
+        font-size: 1rem !important;
     }
 }

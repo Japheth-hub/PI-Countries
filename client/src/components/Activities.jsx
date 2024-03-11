@@ -41,8 +41,7 @@ export default function Activities() {
     try {
       const confirmmacion = confirm('Estas apunto de eliminar este pais de la actividad')
       if (confirmmacion) {
-        const { data } = await axios.delete(`${URLrelaciones}?name=${name}&pais=${pais}`)
-        alert(data.message)
+        await axios.delete(`${URLrelaciones}?name=${name}&pais=${pais}`)
         window.location.reload()
       }
     } catch (error) {
@@ -54,8 +53,7 @@ export default function Activities() {
     try {
       const confirmacio = confirm('Estas apunto de eliminar esta actividad de forma permanente')
       if (confirmacio) {
-        const { data } = await axios.delete(`${URLactivities}/${name}`)
-        alert(data)
+        await axios.delete(`${URLactivities}/${name}`)
         window.location.reload()
       }
     } catch (error) {
@@ -105,7 +103,7 @@ export default function Activities() {
                     <td>{item.season}</td>
                     <td className='listCountries'>{item.Countries.length <= 0 ? 'No hay paises' : item.Countries.map((pais) => {
                       return (
-                        <p key={pais.id}>{pais.name}<button onClick={() => { deletePais(item.name, pais.id) }} id={pais.id} className='iconClose'>✘</button></p>
+                        <p key={pais.id}><Link to={`/detail/${pais.id}`}><i>{pais.name}</i></Link><button onClick={() => { deletePais(item.name, pais.id) }} id={pais.id} className='iconClose'>✘</button></p>
                       )
                     })}</td>
                     <td><button onClick={() => { deleteActivity(item.name) }} className='btn-delete'>Delete</button></td>

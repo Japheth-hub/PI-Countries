@@ -36,3 +36,9 @@
 .card:hover{
     background-color: rgba(255, 255, 255, 0.5);
 }
+
+@media screen and (max-width: 374px) {
+    .card{
+        min-width: 49%;
+    }
+}

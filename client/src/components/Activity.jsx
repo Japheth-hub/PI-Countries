@@ -23,8 +23,7 @@ export default function Activity() {
         try {
             const confirmmacion = confirm('Estas apunto de eliminar este pais de la actividad')
             if (confirmmacion) {
-                const { data } = await axios.delete(`${URLrelaciones}?name=${name}&pais=${pais}`)
-                alert(data.message)
+                await axios.delete(`${URLrelaciones}?name=${name}&pais=${pais}`)
                 navigate('/activities')
                 window.location.reload()
             }

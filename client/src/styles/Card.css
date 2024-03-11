@@ -81,3 +81,9 @@
     }
 }
 
+@media screen and (max-width: 380px) {
+    .info p{
+        font-size: 1rem;
+    }
+}
+

@@ -20,7 +20,7 @@ export default function InfoPais({ pais }) {
       const confirmacion = confirm('Estas seguro de que deseas eliminar la Actividad')
       if(confirmacion) {
         await axios.delete(`${URLrelaciones}?name=${name}&pais=${pais.id}`)
-        alert('Actividad eliminada con exito')
+        // alert('Actividad eliminada con exito')
         window.location.reload()
       }
       
