@@ -5,6 +5,12 @@ const URL = 'http://localhost:5000/countries'
 
 module.exports = async function guardarDatos() {
   try {
+    const allCountries = await Country.findAll()
+    console.log(allCountries.length)
+    if(allCountries.length > 0){
+      console.log('Carga exitosa')
+      return
+    }
     const { data } = await axios(URL);
     for (let country of data) {
       Country.create({
