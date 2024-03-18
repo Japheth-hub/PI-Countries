@@ -4,8 +4,8 @@ const guardarDatos = require('./src/helpers/guardarDatos')
 const port = process.env.PORT;
 
 
-conn.sync({ force: true })
-  .then(() => guardarDatos())
+conn.sync({force: true})
+  // .then(() => guardarDatos())
   .then(() => {
     server.listen(port, () => {
       console.log(`Server listening on port ${port}`);
